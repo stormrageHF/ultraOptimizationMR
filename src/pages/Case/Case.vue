@@ -173,7 +173,7 @@ export default {
     DeletePatientCase(Id, func) {
       // const t = this;
       Vue.axios
-        .post("/PatientCase/DeletePatientCase", {
+        .post("/PatientCase/DeleteMRPatientCase", {
           Id: Id
         })
         .then(response => {

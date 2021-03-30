@@ -1,15 +1,22 @@
 <template>
-  <div class="content_box">
-    <div class="video_box">
-      <video
-        v-if="false"
-        src="https://video.idoctor.cc/897d5132d1f244bb934b186dd788962f/4f0d7ec62413df239dad758a5acd0be8-sd.mp4"
-        controls="controls"
-        poster="https://video.idoctor.cc/image/cover/E0374B9C0E2C4B8A8CED7C5F6C5913F7-6-2.png"
-        loop
-        width="800"
-        height="450"
-      >您的浏览器不支持 video 标签。</video>
+  <div class="msite_box">
+    <div class="content_box">
+      <div class="video_box">
+        <video
+          v-if="false"
+          src="https://video.idoctor.cc/897d5132d1f244bb934b186dd788962f/4f0d7ec62413df239dad758a5acd0be8-sd.mp4"
+          controls="controls"
+          poster="https://video.idoctor.cc/image/cover/E0374B9C0E2C4B8A8CED7C5F6C5913F7-6-2.png"
+          loop
+          width="800"
+          height="450"
+        >
+          您的浏览器不支持 video 标签。
+        </video>
+      </div>
+    </div>
+    <div class="imgbox">
+      <img src="@/assets/images/expert/zha_02.jpg" alt />
     </div>
   </div>
 </template>
@@ -19,14 +26,13 @@ export default {
   name: "Msite",
   mounted() {
     console.log(this.$route);
-  }
+  },
 };
 </script>
 
 <style scoped>
 .content_box {
-  background: url(../../assets/images/ultra-mr02.jpg) no-repeat right
-    top;
+  background: url(../../assets/images/ultra-mr02.jpg) no-repeat right top;
   background-size: cover;
   min-height: 900px;
   min-width: 1000px;
@@ -42,7 +48,7 @@ export default {
   position: relative;
 }
 @media screen and (max-width: 1400px) {
-  .content_box{
+  .content_box {
     min-height: 700px;
   }
 }
@@ -53,6 +59,16 @@ export default {
   left: 160px;
   top: 110px;
   /* background-color: #ffffff; */
+}
+.imgbox {
+  width: 100%;
+}
+.imgbox img {
+  width: 100%;
+}
+.msite_box {
+  width: 100%;
+  min-width: 1000px;
 }
 </style>
 <style>

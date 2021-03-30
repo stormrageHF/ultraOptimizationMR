@@ -1,19 +1,19 @@
 <template>
   <div class="content_box">
     <div class="imgbox">
-      <img src="@/assets/images/expert/committee2.svg" alt />
+      <img src="@/assets/images/expert/zha_03.jpg" alt />
     </div>
     <div class="imgbox">
-      <img src="@/assets/images/expert/head.svg" alt />
+      <img src="@/assets/images/expert/zha_04.jpg" alt />
     </div>
     <div class="imgbox">
-      <img src="@/assets/images/expert/chest.svg" alt />
+      <img src="@/assets/images/expert/zha_05.jpg" alt />
     </div>
     <div class="imgbox">
-      <img src="@/assets/images/expert/abdomen.svg" alt />
+      <img src="@/assets/images/expert/zha_06.jpg" alt />
     </div>
     <div class="imgbox">
-      <img src="@/assets/images/expert/peripheral.svg" alt />
+      <img src="@/assets/images/expert/zha_07.jpg" alt />
     </div>
   </div>
 </template>

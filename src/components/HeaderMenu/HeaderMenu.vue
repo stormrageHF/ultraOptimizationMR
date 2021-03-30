@@ -85,7 +85,7 @@ export default {
   name: "HeaderMenu",
   data() {
     return {
-      activeNum: "1",
+      activeNum: this.$route.meta.activeNum || "1",
       data11: [],
       appoint_name: "",
       appoint_id: "",

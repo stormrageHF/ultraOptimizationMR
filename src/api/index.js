@@ -73,7 +73,7 @@ export const DeleteUser = (data) => {
 
 // 管理员查询案例
 export const GetPaitentCaseByPage = (data) => {
-    return ajaxReq('PatientCase/GetPaitentCaseByPage', data, 'POST')
+    return ajaxReq('PatientCase/GetMRPaitentCaseByPage', data, 'POST')
 }
 
 // 提交医生 获取案例列表
