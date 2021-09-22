@@ -98,12 +98,12 @@ export const GetPaitentCaseForScore = () => {
 
 // 提交打分
 export const SocrePatientCase = (data) => {
-    return ajaxReq('PatientCase/SocrePatientCase', data, 'POST')
+    return ajaxReq('PatientCase/SocreMRPatientCase', data, 'POST')
 }
 
 // 获取某个评分内容
 export const GetScore = (data) => {
-    return ajaxReq('PatientCase/GetScore', data, 'GET')
+    return ajaxReq('PatientCase/GetMRScore', data, 'GET')
 }
 
 

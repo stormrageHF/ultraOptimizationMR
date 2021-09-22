@@ -1,6 +1,7 @@
 <template>
   <div class="scoreCaseBox">
-    <div v-if="scoreType === '头颈'">
+    <div v-if="false">
+      <div v-if="scoreType === '头颈'">
       <HeadScore :TJScore="scoreForm" @submit="submitScore" :disabled="disabled"></HeadScore>
     </div>
     <div v-else-if="scoreType === '心胸'">
@@ -12,6 +13,14 @@
     <div v-else-if="scoreType === '外周'">
       <PeripheralScore :WZScore="scoreForm" @submit="submitScore" :disabled="disabled"></PeripheralScore>
     </div>
+    </div>
+    <div>
+      <CommenScore
+        :TJScore="scoreForm"
+        @submit="submitScore"
+        :disabled="disabled"
+      />
+    </div>
   </div>
 </template>
 
@@ -21,6 +30,7 @@ import HeadScore from "./HeadScore/HeadScore";
 import HeartCase from "./HeartCase/HeartScore";
 import AbdomenScore from "./AbdomenScore/AbdomenScore";
 import PeripheralScore from "./PeripheralScore/PeripheralScore";
+import CommenScore from "./CommenCase/CommenCase.vue";
 
 export default {
   name: "ScoreCase",
@@ -35,14 +45,14 @@ export default {
   data() {
     return {
       scoreForm: {
-        LCZLScore: "0",
-        FAHLScore: "0",
-        SMJSScore: "0",
-        ZQXGScore: "0",
-        ZDJBScore: "0",
-        LCXQScore: "0",
-        BLXJScore: "0",
-        TotleScore: "0",
+        LCZLScore: 0,
+        JCSBScore: 0,
+        SMXLScore: 0,
+        DBJYYScore: 0,
+        TPZLScore: 0,
+        LCZDScore: 0,
+        SMFAScore: 0,
+        TotleScore: 0,
       },
       submitForm: null,
     };
@@ -65,18 +75,19 @@ export default {
       });
       if (r.code === 1) {
         console.log(r.data);
-        if (that.scoreType === "头颈") {
-          that.scoreForm = r.data.TJScore;
-        }
-        if (that.scoreType === "心胸") {
-          that.scoreForm = r.data.XXScore;
-        }
-        if (that.scoreType === "腹部") {
-          that.scoreForm = r.data.FBScore;
-        }
-        if (that.scoreType === "外周") {
-          that.scoreForm = r.data.WZScore;
-        }
+        // if (that.scoreType === "头颈") {
+        //   that.scoreForm = r.data.TJScore;
+        // }
+        // if (that.scoreType === "心胸") {
+        //   that.scoreForm = r.data.XXScore;
+        // }
+        // if (that.scoreType === "腹部") {
+        //   that.scoreForm = r.data.FBScore;
+        // }
+        // if (that.scoreType === "外周") {
+        //   that.scoreForm = r.data.WZScore;
+        // }
+        that.scoreForm = r.data;
       } else {
         this.$alertError(r.error);
       }
@@ -94,6 +105,7 @@ export default {
     HeartCase,
     AbdomenScore,
     PeripheralScore,
+    CommenScore,
   },
   created() {
     this.GetScoreAsync();

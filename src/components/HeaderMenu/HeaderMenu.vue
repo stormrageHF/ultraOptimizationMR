@@ -46,7 +46,7 @@
       <el-menu-item class="el-menu-item_cus" index="5" v-show="accountGrade === 3 || accountGrade === 0">
         <span slot="title">提交案例</span>
       </el-menu-item>
-      <el-menu-item class="el-menu-item_cus" index="6" v-show="accountGrade=== 4 || accountGrade === 1" v-if="false">
+      <el-menu-item class="el-menu-item_cus" index="6" v-show="accountGrade=== 4 || accountGrade === 1">
         <span slot="title">评审案例</span>
       </el-menu-item>
       <el-menu-item class="el-menu-item_cus" index="7" v-show="accountGrade=== 5 || accountGrade === 2">

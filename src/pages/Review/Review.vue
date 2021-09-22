@@ -15,7 +15,6 @@
           </template>
         </el-table-column>
         <el-table-column label="总分" prop="TotleScore"></el-table-column>
-
         <!-- <el-table-column label="提交时间">
           <template slot-scope="scope">
             <span>{{ scope.row.CreateTime | formatTime }}</span>
