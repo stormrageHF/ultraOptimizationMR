@@ -1,13 +1,10 @@
 <template>
   <div class="content_box_cus">
     <div v-if="!CreateCaseVisible">
-
       <div class="filter_box">
-
         <div class="btn_box">
           <el-button type="primary" @click="submitCase">提交案例</el-button>
         </div>
-
       </div>
 
       <el-table :data="dataSource">
@@ -23,25 +20,28 @@
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="150">
           <template slot-scope="scope">
-            <el-button @click="viewClick(scope.row)" type="text" size="medium">查看</el-button>
+            <el-button @click="viewClick(scope.row)" type="text" size="medium"
+              >查看</el-button
+            >
             <el-button
               @click="updateClick(scope.row)"
               type="text"
               size="medium"
-              v-show="accountGrade === 0 "
-            >编辑</el-button>
+              v-show="accountGrade === 3 || accountGrade === 0"
+              >编辑</el-button
+            >
             <el-button
               @click="deleteClick(scope.row)"
               type="text"
               size="medium"
-              v-show="accountGrade === 0"
-            >删除</el-button>
+              v-show="accountGrade === 3 || accountGrade === 0"
+              >删除</el-button
+            >
           </template>
         </el-table-column>
       </el-table>
 
       <el-pagination
-        
         class="pagination_box"
         @current-change="handleCurrentChange"
         :current-page="currentPage"
@@ -81,10 +81,10 @@ export default {
       dataSource: [],
       tableRow: {
         readOnly: false,
-        caseForm: null
+        caseForm: null,
       },
       currentPage: 1,
-      total: 1
+      total: 1,
     };
   },
   methods: {
@@ -125,7 +125,7 @@ export default {
     // },
     async GetPaitentCaseByPageAsync() {
       const r = await GetPaitentCaseForPatientByPage({
-        PageIndex: this.currentPage
+        PageIndex: this.currentPage,
       });
       if (r.code === 1) {
         // console.log(r.data);
@@ -152,10 +152,10 @@ export default {
       this.$confirm("此操作将永久删除, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning"
+        type: "warning",
       })
         .then(() => {
-          this.DeletePatientCase(item.ID, res => {
+          this.DeletePatientCase(item.ID, (res) => {
             if (res.status === 200 || res.status === 204) {
               for (let i in this.dataSource) {
                 if (this.dataSource[i].ID === item.ID) {
@@ -174,14 +174,14 @@ export default {
       // const t = this;
       Vue.axios
         .post("/PatientCase/DeleteMRPatientCase", {
-          Id: Id
+          Id: Id,
         })
-        .then(response => {
+        .then((response) => {
           if (typeof func == "function") {
             func(response);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           if (typeof func == "function") {
             func(error);
           }
@@ -191,20 +191,20 @@ export default {
       this.currentPage = val;
       this.GetPaitentCaseByPageAsync();
     },
-    searchClick(){
-      this.GetPaitentCaseByPageAsync()
-    }
+    searchClick() {
+      this.GetPaitentCaseByPageAsync();
+    },
   },
   components: {
-    CreateCase: CreateCase
+    CreateCase: CreateCase,
   },
   computed: {
-    ...mapState(["accountGrade"])
+    ...mapState(["accountGrade"]),
   },
   filters: {
     formatTime(value) {
       return value.replace("T", " ").substr(0, 16);
-    }
+    },
   },
   mounted() {
     window.scroll({ top: 0, left: 0, behavior: "auto" });
@@ -219,7 +219,7 @@ export default {
     // });
     //
     this.GetPaitentCaseByPageAsync();
-  }
+  },
 };
 </script>
 

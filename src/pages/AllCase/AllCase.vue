@@ -11,10 +11,10 @@
           </el-form-item>
           <el-form-item label="分组">
             <el-select v-model="filterModel.GroupName" placeholder="请选择分组">
-              <el-option label="头颈分组" value="头颈分组"></el-option>
+              <el-option label="神经分组" value="神经分组"></el-option>
               <el-option label="心胸分组" value="心胸分组"></el-option>
               <el-option label="腹部分组" value="腹部分组"></el-option>
-              <el-option label="外周分组" value="外周分组"></el-option>
+              <el-option label="磁共振分组" value="磁共振分组"></el-option>
               <el-option label="全部" value></el-option>
             </el-select>
           </el-form-item>
@@ -92,7 +92,7 @@
 
 <script>
 import CreateCase from "@/components/CreateCase/CreateCase";
-import { GetMRPaitentCaseByPage, ExportCase } from "@/api/index.js";
+import { GetMRPaitentCaseByPage, ExportMRCase } from "@/api/index.js";
 
 export default {
   name: "AllCase",
@@ -169,7 +169,7 @@ export default {
       this.ExportCaseAsync();
     },
     async ExportCaseAsync() {
-      const r = await ExportCase();
+      const r = await ExportMRCase();
       if (r.code === 1) {
         // console.log(r.data.XlsLink);
         let _xurl = r.data.XlsLink;

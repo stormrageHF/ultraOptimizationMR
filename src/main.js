@@ -28,19 +28,20 @@ if (isRelease) {
 } else {
   axios.defaults.baseURL = 'http://101.200.177.46:8076';
 }
-if (localStorage.getItem('UltraToken')) {
-  axios.defaults.headers.common['Authorization'] = localStorage.getItem('UltraToken');
+if (localStorage.getItem('UltraTokenMR')) {
+  axios.defaults.headers.common['Authorization'] = localStorage.getItem('UltraTokenMR');
 }
+axios.defaults.timeout = 1000*60*20; // 20分钟
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
     // console.log(error)
     if (error.response.data.StatusCode == 40111) {
-      localStorage.removeItem("UltraToken");
-      localStorage.removeItem("DBJLoginInfo");
-      localStorage.removeItem("DBJLoginName");
-      localStorage.removeItem("DBJLoginDate");
-      // localStorage.setItem("DBJAccountGrade", -1)
+      localStorage.removeItem("UltraTokenMR");
+      localStorage.removeItem("ZBJLoginInfo");
+      localStorage.removeItem("ZBJLoginName");
+      localStorage.removeItem("ZBJLoginDate");
+      // localStorage.setItem("ZBJAccountGrade", -1)
       this.$store.dispatch("recordAccountGrade", -1);
       
       router.replace("/login");

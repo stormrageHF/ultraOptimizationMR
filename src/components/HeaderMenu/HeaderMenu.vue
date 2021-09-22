@@ -43,13 +43,13 @@
         </el-dropdown>
       </el-menu-item>
 
-      <el-menu-item class="el-menu-item_cus" index="5" v-show="accountGrade === 0">
+      <el-menu-item class="el-menu-item_cus" index="5" v-show="accountGrade === 3 || accountGrade === 0">
         <span slot="title">提交案例</span>
       </el-menu-item>
-      <el-menu-item class="el-menu-item_cus" index="6" v-show="accountGrade===1">
+      <el-menu-item class="el-menu-item_cus" index="6" v-show="accountGrade=== 4 || accountGrade === 1" v-if="false">
         <span slot="title">评审案例</span>
       </el-menu-item>
-      <el-menu-item class="el-menu-item_cus" index="7" v-show="accountGrade===2">
+      <el-menu-item class="el-menu-item_cus" index="7" v-show="accountGrade=== 5 || accountGrade === 2">
         <!-- <span slot="title">用户管理</span> -->
         <el-dropdown @command="handleCommand">
           <span class="el-dropdown-link">
@@ -141,11 +141,11 @@ export default {
     exit_func() {
       // this.$store.commit("clear");
       this.$router.replace("/login");
-      localStorage.removeItem("UltraToken");
-      localStorage.removeItem("DBJLoginInfo");
-      localStorage.removeItem("DBJLoginName");
-      localStorage.removeItem("DBJLoginDate");
-      // localStorage.setItem("DBJAccountGrade", -1);
+      localStorage.removeItem("UltraTokenMR");
+      localStorage.removeItem("ZBJLoginInfo");
+      localStorage.removeItem("ZBJLoginName");
+      localStorage.removeItem("ZBJLoginDate");
+      // localStorage.setItem("ZBJAccountGrade", -1);
       this.$store.dispatch("recordAccountGrade", -1);
     },
     handleCommand(command) {

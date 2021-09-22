@@ -27,33 +27,21 @@ export default {
     };
   },
   methods: {
-    // exit_func() {
-    //   // this.$store.commit("clear");
-    //   this.$router.replace("/login");
-    //   localStorage.removeItem("UltraToken");
-    //   localStorage.removeItem("DBJLoginInfo");
-    //   localStorage.removeItem("DBJLoginName");
-    //   localStorage.removeItem("DBJLoginDate");
-    //   localStorage.removeItem("DBJAccountGrade");
-    // }
-    // get_data(obj) {
-    //    this.$refs.child.get_data(obj.id, obj.name);
-    // }
   },
   components: {
     HeaderMenu: HeaderMenu
   },
   computed: {},
   updated() {
-    if (localStorage.DBJLoginName) {
-      // this.username = JSON.parse(localStorage.DBJLoginName);
-      this.username = localStorage.DBJLoginName;
+    if (localStorage.ZBJLoginName) {
+      // this.username = JSON.parse(localStorage.ZBJLoginName);
+      this.username = localStorage.ZBJLoginName;
     }
   },
   mounted: function() {
-    if (localStorage.DBJLoginName) {
-      // this.username = JSON.parse(localStorage.DBJLoginName);
-      this.username = localStorage.DBJLoginName;
+    if (localStorage.ZBJLoginName) {
+      // this.username = JSON.parse(localStorage.ZBJLoginName);
+      this.username = localStorage.ZBJLoginName;
     }
   }
 };

@@ -72,7 +72,7 @@ export const DeleteUser = (data) => {
 }
 
 // 管理员查询案例
-export const GetPaitentCaseByPage = (data) => {
+export const GetMRPaitentCaseByPage = (data) => {
     return ajaxReq('PatientCase/GetMRPaitentCaseByPage', data, 'POST')
 }
 
@@ -82,8 +82,8 @@ export const GetPaitentCaseForPatientByPage = (data) => {
 }
 
 // 导出案例
-export const ExportCase = (data) => {
-    return ajaxReq('PatientCase/ExportCase', data, 'GET')
+export const ExportMRCase = (data) => {
+    return ajaxReq('PatientCase/ExportMRCase', data, 'POST')
 }
 
 // 导出注册用户
@@ -93,7 +93,7 @@ export const ExportAccount = (data) => {
 
 // 获取评分案例
 export const GetPaitentCaseForScore = () => {
-    return ajaxReq('PatientCase/GetPaitentCaseForScore')
+    return ajaxReq('PatientCase/GetMRPaitentCaseForScore')
 }
 
 // 提交打分

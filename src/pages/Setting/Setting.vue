@@ -20,6 +20,7 @@ export default {
   name: "Setting",
   data() {
     return {
+      test: '',
       displayIndex: "1",
       sideMenuArr: ["修改密码", "绑定邮箱"]
     };

@@ -92,7 +92,7 @@ export default {
       const t = this;
       const data = {
         OldPassword: t.ruleForm.pass,
-        AccountName: JSON.parse(localStorage.DBJLoginName),
+        AccountName: JSON.parse(localStorage.ZBJLoginName),
         NewPassword: t.ruleForm.pass
       };
       const result = await ResetPassword(data);

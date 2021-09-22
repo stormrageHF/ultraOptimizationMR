@@ -32,7 +32,7 @@ export default {
 
 <style scoped>
 .content_box {
-  background: url(../../assets/images/ultra-mr02.jpg) no-repeat right top;
+  background: url(../../assets/images/ultra-mr02.jpg) no-repeat center top;
   background-size: cover;
   min-height: 900px;
   min-width: 1000px;

@@ -16,7 +16,7 @@
               <h2>受检者基本信息</h2>
             </div>
 
-            <el-form-item label="患者性别" prop="BSex">
+            <el-form-item label="患者性别" prop="BSex" required="">
               <el-radio v-model="submitCaseForm.BSex" label="0">男</el-radio>
               <el-radio v-model="submitCaseForm.BSex" label="1">女</el-radio>
             </el-form-item>
@@ -30,8 +30,7 @@
 
             <el-form-item label="身高" required>
               <el-input
-                v-model.number="submitCaseForm.pHeight"
-                type="text"
+                v-model="submitCaseForm.pHeight"
                 placeholder="身高"
               >
                 <template slot="append">cm</template>
@@ -40,7 +39,7 @@
 
             <el-form-item label="体重" required>
               <el-input
-                v-model.number="submitCaseForm.pWeight"
+                v-model="submitCaseForm.pWeight"
                 type="text"
                 placeholder="体重"
               >
@@ -81,21 +80,21 @@
               ></el-input>
             </el-form-item>
 
-            <el-form-item label="肾功能（肌酐）" required>
+            <el-form-item label="肌酐" required>
               <el-input
-                v-model.number="submitCaseForm.BSGN_JG"
+                v-model="submitCaseForm.BSGN_JG"
                 type="text"
-                placeholder="肾功能（肌酐）"
+                placeholder="肌酐"
               >
                 <template slot="append">umol/L</template>
               </el-input>
             </el-form-item>
 
-            <el-form-item label="肾功能（肾小球滤过率）" required>
+            <el-form-item label="肾小球滤过率">
               <el-input
-                v-model.number="submitCaseForm.BSGN_JXQ"
+                v-model="submitCaseForm.BSGN_JXQ"
                 type="text"
-                placeholder="肾功能（肾小球滤过率）"
+                placeholder="肾小球滤过率"
               >
                 <template slot="append">mL/min/1.73m2</template>
               </el-input>
@@ -112,13 +111,13 @@
             </el-form-item>
 
             <el-form-item label="扫描部位" prop="BSMBW" required>
-              <el-input
+              <!-- <el-input
                 v-model="submitCaseForm.BSMBW"
                 type="text"
                 placeholder="扫描部位"
-              ></el-input>
+              ></el-input> -->
 
-              <!-- <el-col :span="11">
+              <el-col :span="11">
                 <el-select
                   filterable
                   placeholder="部位"
@@ -141,7 +140,7 @@
                 <el-select
                   filterable
                   placeholder="二级部位"
-                  v-model="submitCaseForm.JSMBW1"
+                  v-model="submitCaseForm.BSMBW1"
                   style="width: 100%"
                 >
                   <el-option
@@ -151,7 +150,7 @@
                     :value="item.value"
                   ></el-option>
                 </el-select>
-              </el-col> -->
+              </el-col>
             </el-form-item>
 
             <el-form-item label="本次检查关注问题" prop="BGZWT">
@@ -215,7 +214,39 @@
               ></el-input>
             </el-form-item>
 
-            <el-form-item label="高压注射器品牌">
+            <el-form-item label="注射系统">
+              <el-input
+                v-model="submitCaseForm.ZSXT"
+                type="text"
+                placeholder="注射系统"
+              ></el-input>
+            </el-form-item>
+
+            <!-- <el-form-item label="扫描方案及序列">
+              <el-input
+                v-model="submitCaseForm.JZQXLMC"
+                type="text"
+                placeholder="扫描方案及序列"
+              ></el-input>
+            </el-form-item> -->
+
+            <!-- <el-form-item label="并行加速采集">
+              <el-input
+                v-model="submitCaseForm.JJSCJ"
+                type="text"
+                placeholder="并行加速采集"
+              ></el-input>
+            </el-form-item> -->
+
+            <!-- <el-form-item label="脂肪抑制">
+              <el-input
+                v-model="submitCaseForm.JZFYZ"
+                type="text"
+                placeholder="脂肪抑制"
+              ></el-input>
+            </el-form-item> -->
+
+            <!-- <el-form-item label="高压注射器品牌">
               <el-input
                 v-model="submitCaseForm.GYZSQ_PP"
                 type="text"
@@ -229,24 +260,24 @@
                 type="text"
                 placeholder="高压注射器具体型号"
               ></el-input>
-            </el-form-item>
+            </el-form-item> -->
 
             <el-divider></el-divider>
             <!-- ******************************************************************************** -->
-
+            <!-- 扫描方案-平扫 -->
             <div class="case_title">
-              <h2>扫描方案 - 平扫序列</h2>
+              <span>扫描方案 - 平扫</span>
             </div>
 
-            <el-form-item label="扫描范围">
+            <!-- <el-form-item label="扫描范围">
               <el-input
                 v-model="submitCaseForm.PSFW"
                 type="text"
                 placeholder="扫描范围"
               ></el-input>
-            </el-form-item>
+            </el-form-item> -->
 
-            <el-form-item label="扫描序列">
+            <!-- <el-form-item label="扫描序列" :required="required">
               <el-input
                 v-model="submitCaseForm.PSXL"
                 type="text"
@@ -254,15 +285,15 @@
               ></el-input>
             </el-form-item>
 
-            <el-form-item label="扫描方向">
+            <el-form-item label="扫描方向" :required="required">
               <el-input
                 v-model="submitCaseForm.PSFX"
                 type="text"
                 placeholder="扫描方向"
               ></el-input>
-            </el-form-item>
+            </el-form-item> -->
 
-            <el-form-item label="是否压脂" prop="PSSFYZ">
+            <!-- <el-form-item label="是否压脂" prop="PSSFYZ">
               <el-radio v-model="submitCaseForm.PSSFYZ" label="0">是</el-radio>
               <el-radio v-model="submitCaseForm.PSSFYZ" label="1">否</el-radio>
             </el-form-item>
@@ -273,54 +304,51 @@
                 type="text"
                 placeholder="扫描时间"
               ></el-input>
-            </el-form-item>
+            </el-form-item> -->
+
+            <div>
+              <div v-for="(item, i) in submitCaseForm.PSXLS" :key="'PSXL' + i">
+                <el-form-item :label="'平扫序列' + (i + 1)">
+                  <el-input
+                    v-model="item.text"
+                    type="textarea"
+                    rows="5"
+                    :placeholder="'平扫序列' + (i + 1)"
+                    resize="none"
+                  ></el-input>
+                </el-form-item>
+              </div>
+
+              <el-form-item>
+                <el-button @click="addPSXL()">添加平扫序列项</el-button>
+                <el-button @click="removePSXL()">删除平扫序列项</el-button>
+              </el-form-item>
+            </div>
 
             <el-divider></el-divider>
             <!-- ******************************************************************************** -->
 
             <div class="case_title">
-              <h2>扫描方案 - 增强序列</h2>
+              <h2>扫描方案 - 增强</h2>
             </div>
 
-            <el-form-item label="注射对比剂后的延迟时间" prop="ZQYCSJ">
-              <el-input
-                v-model="submitCaseForm.ZQYCSJ"
-                type="text"
-                placeholder="注射对比剂后的延迟时间"
-              ></el-input>
-            </el-form-item>
+            <div class="">
+              <el-collapse v-model="activeName" accordion>
+                <el-collapse-item
+                  :title="'增强扫描序列 ' + (i + 1)"
+                  :name="i + 1"
+                  v-for="(source, i) in submitCaseForm.ZQXLS"
+                  :key="'ZQXLForm' + i"
+                >
+                  <ZQXLForm :source="source" :seq="i + 1" :FormIsDisabled="FormIsDisabled"></ZQXLForm>
+                </el-collapse-item>
+              </el-collapse>
+            </div>
 
-            <el-form-item label="扫描范围" prop="ZQYCSJ">
-              <el-input
-                v-model="submitCaseForm.ZQFW"
-                type="text"
-                placeholder="扫描范围"
-              ></el-input>
-            </el-form-item>
-
-            <el-form-item label="扫描序列" prop="ZQXL">
-              <el-input
-                v-model="submitCaseForm.ZQXL"
-                type="text"
-                placeholder="扫描序列"
-              ></el-input>
-            </el-form-item>
-
-            <el-form-item label="扫描方向" prop="ZQFX">
-              <el-input
-                v-model="submitCaseForm.ZQFX"
-                type="text"
-                placeholder="扫描方向"
-              ></el-input>
-            </el-form-item>
-
-            <el-form-item label="扫描时间" prop="ZQSJ">
-              <el-input
-                v-model="submitCaseForm.ZQSJ"
-                type="text"
-                placeholder="扫描时间"
-              ></el-input>
-            </el-form-item>
+            <div class="ZQBtns">
+              <el-button @click="addZQXLForm()">增加</el-button>
+              <el-button @click="deleteZQXLForm()">删除</el-button>
+            </div>
 
             <el-divider></el-divider>
             <!-- ******************************************************************************** -->
@@ -329,14 +357,37 @@
               <h2>对比剂注射情况</h2>
             </div>
 
-            <el-form-item label="对比剂品牌" prop="DDBJPP" required>
+            <el-form-item label="对比剂品牌" prop="DDBJPP">
+              <div v-if="DBJPPOTHER === true">
+                <el-input
+                  type="text"
+                  v-model="submitCaseForm.DDBJPP"
+                  placeholder="输入对比剂品牌"
+                >
+                  <el-button
+                    slot="append"
+                    icon="el-icon-back"
+                    @click="backSelect"
+                    >返回</el-button
+                  >
+                </el-input>
+              </div>
+
               <el-select
+                v-else
                 v-model="submitCaseForm.DDBJPP"
                 placeholder="对比剂品牌"
                 style="width: 100%"
+                @change="DDBJPPChange"
               >
                 <el-option label="马根维显" value="马根维显"></el-option>
                 <el-option label="加乐显" value="加乐显"></el-option>
+                <el-option label="欧乃影" value="欧乃影"></el-option>
+                <el-option label="莫迪司" value="莫迪司"></el-option>
+                <el-option label="多它灵" value="多它灵"></el-option>
+                <el-option label="普海司" value="普海司"></el-option>
+                <el-option label="佳迪显" value="佳迪显"></el-option>
+                <el-option label="其他" value="其他"></el-option>
               </el-select>
             </el-form-item>
 
@@ -390,7 +441,7 @@
               </el-input>
             </el-form-item>
 
-            <el-form-item label="盐水流速" prop="DYSLS">
+            <!-- <el-form-item label="盐水流速" prop="DYSLS">
               <el-input
                 v-model="submitCaseForm.DYSLS"
                 type="text"
@@ -406,7 +457,7 @@
                 placeholder="打药时机"
               >
               </el-input>
-            </el-form-item>
+            </el-form-item> -->
 
             <el-form-item label="延迟时间" prop="DYCSJ">
               <el-input
@@ -511,14 +562,16 @@
 </template>
 
 <script>
-import {
-  POSITIVE_NUMBER_REG,
-  // INTEGER_NUMBER_REG,
-} from "../../commen/js/commen";
+// import {
+//   POSITIVE_NUMBER_REG,
+//   INTEGER_NUMBER_REG,
+// } from "../../commen/js/commen";
 import Vue from "vue";
 import Upload from "../Upload/Upload";
 import { DeleteFile } from "@/api/index.js";
 import ScoreCase from "../ScoreCase/ScoreCase";
+// import PSXLForm from "../PSXLForm/PSXLForm";
+import ZQXLForm from "../ZQXLForm/ZQXLForm";
 
 export default {
   name: "CreateCase",
@@ -536,16 +589,17 @@ export default {
     },
   },
   data() {
-    // 选填正数
-    var validateNumber1 = (rule, value, callback) => {
-      if (value === "") {
-        callback();
-      } else if (!POSITIVE_NUMBER_REG.test(value)) {
-        callback(new Error("必须是大于0的数字"));
-      } else {
-        callback();
-      }
-    };
+    // // 选填正数
+    // var validateNumber1 = (rule, value, callback) => {
+    //   if (value === "") {
+    //     callback();
+    //   } else if (!POSITIVE_NUMBER_REG.test(value)) {
+    //     callback(new Error("必须是大于0的数字"));
+    //   } else {
+    //     callback();
+    //   }
+    // };
+
     // // 必须填正数
     // var validateNumber11 = (rule, value, callback) => {
     //   if (value === "") {
@@ -595,9 +649,13 @@ export default {
       }
     };
     return {
+      DBJPPOTHER: false,
+      PSXLNum: 1,
+      activeName: 1,
+      zqnum: 1,
       caseForm: {
         //患者信息
-        BSex: "", //患者性别
+        BSex: "0", //患者性别
         PAge: "", //年龄---
         pHeight: "", //身高--
         pWeight: "", //体重--
@@ -616,27 +674,9 @@ export default {
         JJX: "", //机型
         JCQ: "", //场强（T）
         JXQ: "", //线圈
-        // JZSXT: "", //注射系统
-        GYZSQ_PP: "", //高压注射器品牌
-        GYZSQ_XH: "", //高压注射器型号
-
-        // 扫描方案
-        // 平扫
-        PSFW: "", //平扫范围
-        PSXL: "", //平扫序列
-        PSFX: "", //平扫方向
-        PSSFYZ: "", //平扫 是否压脂
-        PSSFTJ: "", //参考是否添加
-        PSSJ: "", //平扫 扫描时间
-
-        // 增强
-        ZQYCSJ: "", //增强序列 延迟时间
-        ZQFW: "", //增强 扫描范围（手动填写）
-        ZQXL: "", //增强 扫描序列（选项或手动填写）
-        ZQFX: "", //增强 扫描方向
-        ZQSJ: "", //增强 扫描时间
-        ZQSFTJ: "", //增强 是否添加
-
+        ZSXT: "", //注射系统
+        // GYZSQ_PP: "", //高压注射器品牌
+        // GYZSQ_XH: "", //高压注射器型号
         // JZQXLMC: "", //扫描方案及序列
         // JJSCJ: "", //并行加速采集
         // JZFYZ: "", //脂肪抑制
@@ -653,6 +693,45 @@ export default {
         // JQX: "", //期相
         // JSMSJ: "", //扫描时间
 
+        // 扫描方案
+        // 平扫
+        // PSFW: "", //平扫范围
+        PSXLS: [
+          {
+            text: "",
+          },
+        ], //平扫序列
+        // PSFX: "", //平扫方向
+        // PSSFYZ: "0", //平扫 是否压脂
+        // PSSFTJ: "", //参考是否添加
+        // PSSJ: "", //平扫 扫描时间
+
+        // 增强
+        ZQXLS: [
+          {
+            JSCJ: "", //并行加速采集
+            ZFYZ: "", //脂肪抑制
+            TR: "", //TR(ms)
+            TE: "", //TE(ms)
+            FA: "", //FA(deg)
+            FOV: "", //FOV(mm)
+            JZ: "", //阵（像素）
+            CMDW: "", //层面定位
+            CH: "", //层厚（mm)
+            CJ: "", //层距（mm)
+            CS: "", //层数
+            CJSJ: "", //采集时间（sec)
+            QX: "", //期相
+            SMSJ: "", //扫描时间
+          },
+        ],
+        // ZQYCSJ: "", //增强序列 延迟时间
+        // ZQFW: "", //增强 扫描范围（手动填写）
+        // ZQXL: "", //增强 扫描序列（选项或手动填写）
+        // ZQFX: "", //增强 扫描方向
+        // ZQSJ: "", //增强 扫描时间
+        // ZQSFTJ: "", //增强 是否添加
+
         //对比剂注射方案
         DDBJPP: "", //使用对比剂品牌:
         DND: "", //对比剂浓度
@@ -660,8 +739,8 @@ export default {
         DZSFS: "", //注射方式
         DLS: "", //流速：
         DYSJL: "", //盐水剂量（ml）：
-        DYSLS: "", //盐水流速
-        DDYSJ: "", //打药时机：
+        // DYSLS: "", //盐水流速
+        // DDYSJ: "", //打药时机：
         DYCSJ: "", //延迟时间：
 
         //影像表现及诊断思路
@@ -670,6 +749,8 @@ export default {
         Files: [],
       },
       rules: {
+        BSex: [{ require: true }], // 性别
+        PAge: [{ required: true, message: "请输入年龄", trigger: "blur" }], // 年龄
         pHeight: [{ required: true, message: "请输入身高", trigger: "blur" }], //身高--
         pWeight: [{ required: true, message: "请输入体重", trigger: "blur" }], //体重--
         // PAge: [{ required: true, message: "请输入年龄", trigger: "blur" }],
@@ -683,7 +764,7 @@ export default {
         ],
         BSGN_JG: [{ required: true, message: "请输入肌酐", trigger: "blur" }], // 肾功能 肌酐
         BSGN_JXQ: [
-          { required: true, message: "请输入肾小球滤过率", trigger: "blur" },
+          { required: false, message: "请输入肾小球滤过率", trigger: "blur" },
         ], // 肾功能 肾小球滤过率
         BGZWT: [
           {
@@ -698,10 +779,10 @@ export default {
         BSMBW: [{ required: true, message: "请输入扫描部位", trigger: "blur" }],
         JJQPP: [{ required: true, message: "请选择机器品牌", trigger: "blur" }],
         // JPS: [{ required: true, message: "请选择排数", trigger: "blur" }],
-        // JGDY: [
-        //   { required: true, message: "请输入管电压", trigger: "blur" },
-        //   { validator: validateNumber2, trigger: "blur" },
-        // ],
+        JGDY: [
+          { required: true, message: "请输入管电压", trigger: "blur" },
+          // { validator: validateNumber2, trigger: "blur" },
+        ],
         // JXZSJ: [
         //   { required: false, message: "请输入旋转时间", trigger: "blur" },
         //   { validator: validateNumber1, trigger: "blur" },
@@ -734,24 +815,30 @@ export default {
         ],
         DND: [
           { required: false, message: "请输入浓度", trigger: "blur" },
-          { validator: validateNumber1, trigger: "blur" },
+          // { validator: validateNumber1, trigger: "blur" },
         ],
         DZSJL: [
-          { required: false, message: "请输入注射剂量", trigger: "blur" },
-          { validator: validateNumber1, trigger: "blur" },
+          { required: true, message: "请输入注射剂量", trigger: "blur" },
+          // { validator: validateNumber1, trigger: "blur" },
         ],
         DLS: [
           { required: true, message: "请输入流速", trigger: "blur" },
-          { validator: validateNumber1, trigger: "blur" },
+          // { validator: validateNumber1, trigger: "blur" },
         ],
         // IDR: [{ required: true, message: "请输入碘流率", trigger: "blur" }],
         // TIL: [{ required: true, message: "请输入碘总量", trigger: "blur" }],
         DZSFS: [
           { required: false, message: "请输入注射方式", trigger: "blur" },
         ],
-        DYSLS: [{ required: true, message: "请输入盐水流速", trigger: "blur" }], //盐水流速
-        DDYSJ: [{ required: true, message: "请输入打药时机", trigger: "blur" }], //打药时机
-        DYCSJ: [{ required: true, message: "请输入延迟时间", trigger: "blur" }], //延迟时间
+        DYSLS: [
+          { required: false, message: "请输入盐水流速", trigger: "blur" },
+        ], //盐水流速
+        DDYSJ: [
+          { required: false, message: "请输入打药时机", trigger: "blur" },
+        ], //打药时机
+        DYCSJ: [
+          { required: false, message: "请输入延迟时间", trigger: "blur" },
+        ], //延迟时间
         YXBX: [
           {
             required: true,
@@ -777,14 +864,13 @@ export default {
               value: "颈部",
               label: "颈部",
             },
-
-            {
-              value: "脊髓",
-              label: "脊髓",
-            },
             {
               value: "头颈MRA",
               label: "头颈MRA",
+            },
+            {
+              value: "内耳",
+              label: "内耳",
             },
           ],
         },
@@ -805,20 +891,24 @@ export default {
           label: "腹部",
           options: [
             {
-              value: "男性盆腔",
-              label: "男性盆腔",
+              value: "盆腔",
+              label: "盆腔",
             },
             {
-              value: "女性盆腔",
-              label: "女性盆腔",
+              value: "肝脏",
+              label: "肝脏",
+            },
+            {
+              value: "肾脏",
+              label: "肾脏",
+            },
+            {
+              value: "胃肠",
+              label: "胃肠",
             },
             {
               value: "胆胰脾",
               label: "胆胰脾",
-            },
-            {
-              value: "双肾",
-              label: "双肾",
             },
           ],
         },
@@ -830,8 +920,8 @@ export default {
               label: "乳腺",
             },
             {
-              value: "其他MRA",
-              label: "其他MRA",
+              value: "全身MRA",
+              label: "全身MRA",
             },
             {
               value: "骨肌",
@@ -849,6 +939,77 @@ export default {
     };
   },
   methods: {
+    DDBJPPChange(val) {
+      if (val === "其他") {
+        this.DBJPPOTHER = true;
+        this.submitCaseForm.DDBJPP = "";
+      } else {
+        this.DBJPPOTHER = false;
+      }
+    },
+    backSelect() {
+      this.DBJPPOTHER = false;
+      this.submitCaseForm.DDBJPP = "";
+    },
+    addZQXLForm() {
+      if (this.submitCaseForm.ZQXLS.length >= 3) {
+        this.$message({
+          message: "最多只有三个增强序列",
+          type: "warning",
+        });
+        return;
+      }
+      const obj = {
+        JSCJ: "", //并行加速采集
+        ZFYZ: "", //脂肪抑制
+        TR: "", //TR(ms)
+        TE: "", //TE(ms)
+        FA: "", //FA(deg)
+        FOV: "", //FOV(mm)
+        JZ: "", //阵（像素）
+        CMDW: "", //层面定位
+        CH: "", //层厚（mm)
+        CJ: "", //层距（mm)
+        CS: "", //层数
+        CJSJ: "", //采集时间（sec)
+        QX: "", //期相
+        SMSJ: "", //扫描时间
+      };
+      this.submitCaseForm.ZQXLS.push(obj);
+    },
+    deleteZQXLForm() {
+      if (this.submitCaseForm.ZQXLS.length <= 1) {
+        this.$message({
+          type: "warning",
+          message: "最少必须有一个增强序列",
+        });
+        return;
+      }
+      this.submitCaseForm.ZQXLS.pop();
+    },
+    addPSXL() {
+      if (this.submitCaseForm.PSXLS.length === 5) {
+        this.$message({
+          type: "warning",
+          message: "平扫序列最多添加 5 个",
+        });
+        return;
+      }
+      const textobj = {
+        text: "",
+      };
+      this.submitCaseForm.PSXLS.push(textobj);
+    },
+    removePSXL() {
+      if (this.submitCaseForm.PSXLS.length === 1) {
+        this.$message({
+          type: "warning",
+          message: "平扫序列至少有 1 个",
+        });
+        return;
+      }
+      this.submitCaseForm.PSXLS.pop();
+    },
     submitForm(formName) {
       const that = this;
       this.$refs[formName].validate((value) => {
@@ -1046,15 +1207,21 @@ export default {
     // PositiveNumberInput
     Upload,
     ScoreCase,
+    // PSXLForm,
+    ZQXLForm,
   },
   created() {
     // window.addEventListener("beforeunload", e => this.beforeunloadHandler(e));
     //
+    // setInterval(()=>{
+    //   console.log(this.source.ZQYCSJ);
+    // }, 2000)
   },
   updated() {
     // console.log(this.submitCaseForm);
   },
   mounted() {
+    console.log(this.submitCaseForm);
     // window.addEventListener("beforeunload", e => this.beforeunloadHandler(e));
     // if (!this.FormIsDisabled) {
     //   window.onbeforeunload = function(e) {
@@ -1110,5 +1277,11 @@ export default {
   justify-content: space-between;
 }
 .green_text {
+}
+.ZQBtns {
+  margin-top: 20px;
+}
+.el-collapse >>> .el-collapse-item__header {
+  font-size: 15px;
 }
 </style>

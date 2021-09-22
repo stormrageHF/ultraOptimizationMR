@@ -14,7 +14,7 @@ export default {
         state.findPasswordAccount = findPasswordAccount
     },
     [ACCOUNT_GRADE] (state, {accountGrade}) {
-        localStorage.setItem("DBJAccountGrade", accountGrade)
+        localStorage.setItem("ZBJAccountGrade", accountGrade)
         state.accountGrade = accountGrade
     }
 }

@@ -238,26 +238,26 @@ router.beforeEach((to, from, next) => {
 
     if (to.meta.requireAuth) {
         //一天有效期
-        if (localStorage.DBJLoginDate) {
+        if (localStorage.ZBJLoginDate) {
             const date = new Date().toDateString()
-            if (date !== localStorage.DBJLoginDate) {
-                localStorage.removeItem("UltraToken");
-                localStorage.removeItem("DBJLoginInfo");
-                localStorage.removeItem("DBJLoginName");
-                localStorage.removeItem("DBJLoginDate");
-                localStorage.setItem("DBJAccountGrade", -1)
+            if (date !== localStorage.ZBJLoginDate) {
+                localStorage.removeItem("UltraTokenMR");
+                localStorage.removeItem("ZBJLoginInfo");
+                localStorage.removeItem("ZBJLoginName");
+                localStorage.removeItem("ZBJLoginDate");
+                localStorage.setItem("ZBJAccountGrade", -1)
                 router.app.$options.store.dispatch("recordAccountGrade", -1);
             }
         } else {
-            localStorage.removeItem("UltraToken");
-            localStorage.removeItem("DBJLoginInfo");
-            localStorage.removeItem("DBJLoginName");
-            localStorage.removeItem("DBJLoginDate");
-            localStorage.setItem("DBJAccountGrade",-1)
+            localStorage.removeItem("UltraTokenMR");
+            localStorage.removeItem("ZBJLoginInfo");
+            localStorage.removeItem("ZBJLoginName");
+            localStorage.removeItem("ZBJLoginDate");
+            localStorage.setItem("ZBJAccountGrade",-1)
             router.app.$options.store.dispatch("recordAccountGrade", -1);
         }
         // 没有对比剂token直接返回login
-        if (!localStorage.getItem('UltraToken')) {
+        if (!localStorage.getItem('UltraTokenMR')) {
             next('/login');
         } else {
             next();

@@ -12,7 +12,7 @@
       <em>点击上传</em>
     </div>
     <div class="el-upload__tip" slot="tip">
-      <p>1.至少200张不同层面，不同时相的影像资料，格式为JPG/PNG/Dicom</p>
+      <p>1.至少100张不同层面，不同时相的影像资料，格式为JPG/PNG</p>
       <p>2.请将所有的图片压缩成一个文件后上传</p>
       <p>3.压缩文件不能超过100M</p>
       <p>4.请上传脱敏数据</p>
@@ -29,7 +29,7 @@ export default {
     return {
       actionUrl: Vue.axios.defaults.baseURL + "/UploadDicom/UpLoadApiFile",
       req_header: {
-        Authorization: localStorage.getItem("UltraToken")
+        Authorization: localStorage.getItem("UltraTokenMR")
       }
     };
   },

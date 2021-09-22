@@ -129,11 +129,11 @@ export default {
                 that.$router.push("./register/finishinfo");
               } else {
                 // that.$message.success("登录成功");
-                if (res.data.AccountGrade === 0) {
+                if (res.data.AccountGrade === 3 || res.data.AccountGrade === 0) {
                   that.$router.replace("/case");
-                } else if (res.data.AccountGrade === 1) {
+                } else if (res.data.AccountGrade === 4 || res.data.AccountGrade === 1) {
                   that.$router.replace("/review");
-                } else if (res.data.AccountGrade === 2) {
+                } else if (res.data.AccountGrade === 5 || res.data.AccountGrade === 2) {
                   that.$router.replace("/account");
                 } else {
                   that.$router.replace("/");
@@ -152,12 +152,12 @@ export default {
     saveInfo(data) {
       const that = this;
       const s = Base64.encode(data.ID + ":" + data.Token);
-      localStorage.setItem("UltraToken", s);
-      localStorage.DBJLoginDate = new Date().toDateString();
-      localStorage.DBJLoginInfo = JSON.stringify(that.ruleForm2);
-      localStorage.DBJLoginName = data.AccountName;
+      localStorage.setItem("UltraTokenMR", s);
+      localStorage.ZBJLoginDate = new Date().toDateString();
+      localStorage.ZBJLoginInfo = JSON.stringify(that.ruleForm2);
+      localStorage.ZBJLoginName = data.AccountName;
       Vue.axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-        "UltraToken"
+        "UltraTokenMR"
       );
     },
     resetForm(formName) {
@@ -195,25 +195,13 @@ export default {
   },
   computed: {},
   mounted: function() {
-    // const that = this;
-    // document.onkeydown = function(event) {
-    //   const e = event || window.event || arguments.callee.caller.arguments[0];
-    //   const _key = e.keyCode;
-    //   if (_key === 13) {
-    //     that.submitForm("ruleForm2");
-    //   }
-    // };
-    //
-    // if (localStorage.SFYLoginInfo) {
-    //   that.ruleForm2 = JSON.parse(localStorage.SFYLoginInfo);
-    // }
   }
 };
 </script>
 
 <style scoped>
 #main {
-  background: url(../../assets/images/2421602819751_.pic_hd.jpg) no-repeat right bottom;
+  background: url(../../assets/images/bg_.pic_hd.jpg) no-repeat right center;
   background-size: cover;
   min-height: 100%;
   min-width: 1000px;

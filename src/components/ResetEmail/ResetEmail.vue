@@ -50,7 +50,7 @@ export default {
     },
     async ResetMailAsync() {
       const result = await ResetMail({
-        AccountName: JSON.parse(localStorage.DBJLoginName),
+        AccountName: JSON.parse(localStorage.ZBJLoginName),
         Mail: this.ruleForm.Mail
       });
       if (result.code === 1) {
