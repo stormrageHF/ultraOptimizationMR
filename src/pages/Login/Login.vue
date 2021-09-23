@@ -129,7 +129,7 @@ export default {
                 that.$router.push("./register/finishinfo");
               } else {
                 // that.$message.success("登录成功");
-                if (res.data.AccountGrade === 3 || res.data.AccountGrade === 0) {
+                if (res.data.AccountGrade === 3 || res.data.AccountGrade === 0 || res.data.AccountGrade == 6) {
                   that.$router.replace("/case");
                 } else if (res.data.AccountGrade === 4 || res.data.AccountGrade === 1) {
                   that.$router.replace("/review");

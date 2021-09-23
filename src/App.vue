@@ -2,7 +2,7 @@
   <div id="app">
     <el-container>
       <el-header style="height: 0px">
-        <HeaderLogoBox @title-click='titleClick'></HeaderLogoBox>
+        <HeaderLogoBox @title-click="titleClick"></HeaderLogoBox>
         <HeaderNav ref="cus-header-nav" v-show="true"></HeaderNav>
       </el-header>
       <el-main>
@@ -24,19 +24,19 @@ export default {
   name: "App",
   data() {
     return {
-      isLoginView: this.$route.path === "/login"
+      isLoginView: this.$route.path === "/login",
     };
   },
-  methods:{
-    titleClick(){
+  methods: {
+    titleClick() {
       this.$router.push({ path: "/msite" });
-      this.$refs['cus-header-nav'].$refs['el-header-menu'].activeNum = "1"
-    }
+      this.$refs["cus-header-nav"].$refs["el-header-menu"].activeNum = "1";
+    },
   },
   components: {
     HeaderNav,
     Footer,
-    HeaderLogoBox
+    HeaderLogoBox,
   },
   created() {
     document.title = "钆对比剂扫描方案经典高效";
@@ -46,7 +46,7 @@ export default {
   },
   updated() {
     this.isLoginView = this.$route.path === "/login";
-  }
+  },
 };
 </script>
 
@@ -56,7 +56,8 @@ export default {
 
 <style scoped>
 #app {
-  font-family: SourceHanSansSC-Medium ,Avenir, Helvetica, Arial, sans-serif,"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,MingLiu ;
+  font-family: SourceHanSansSC-Medium, Avenir, Helvetica, Arial, sans-serif,
+    "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, MingLiu;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -104,7 +105,8 @@ export default {
 }
 </style>
 <style>
-.find_password_box, .register_info_box {
+.find_password_box,
+.register_info_box {
   max-width: 400px;
   margin: 40px auto;
   box-sizing: border-box;
