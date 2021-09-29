@@ -235,4 +235,19 @@ export default {
   margin-top: 40px;
   margin-bottom: 20px;
 }
+.el-form-item >>> .el-textarea.is-disabled .el-textarea__inner {
+  color: #606266
+}
+.el-form-item >>> .el-input.is-disabled .el-input__inner {
+  color: #606266
+}
+.el-form-item >>> .el-form-item__label {
+  font-size: 16px;
+}
+.el-radio >>> .el-radio__input.is-disabled+span.el-radio__label {
+  color: #606266
+}
+.el-input .el-textarea .el-radio {
+  font-size: 16px;
+}
 </style>

@@ -5,9 +5,10 @@
         <el-table-column type="index" width="50"></el-table-column>
         <!-- <el-table-column label="姓名" prop="DoctorName"></el-table-column> -->
         <!-- <el-table-column label="医院" prop="HospitalName"></el-table-column> -->
-        <el-table-column label="扫描部位" prop="JSMBW"></el-table-column>
+        <el-table-column label="扫描部位(一级)" prop="BSMBW"></el-table-column>
+        <el-table-column label="扫描部位(二级)" prop="BSMBW1"></el-table-column>
         <el-table-column label="机器品牌" prop="JJQPP"></el-table-column>
-        <el-table-column label="排数" prop="JPS"></el-table-column>
+        <el-table-column label="场强" prop="JCQ"></el-table-column>
         <el-table-column label="对比剂品牌" prop="DDBJPP"></el-table-column>
         <el-table-column label="评分状态">
           <template slot-scope="scope">

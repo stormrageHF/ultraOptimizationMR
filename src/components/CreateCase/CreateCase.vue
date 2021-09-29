@@ -526,6 +526,7 @@
                       type="warning"
                       round
                       @click="uploadAgain"
+                      v-show="!FormIsDisabled"
                     >
                       重新上传
                       <i class="el-icon-upload el-icon--right"></i>
@@ -553,8 +554,9 @@
         <ScoreCase
           v-if="isScoring"
           :patientCaseId="submitCaseForm.ID"
-          :scoreType="submitCaseForm.BSMBW"
+          :scoreType="submitCaseForm.MRScoreType"
           :disabled="scoreReadOnly"
+          :links = "submitCaseForm.Files"
         ></ScoreCase>
       </el-col>
     </el-row>
@@ -1283,5 +1285,20 @@ export default {
 }
 .el-collapse >>> .el-collapse-item__header {
   font-size: 15px;
+}
+.el-form-item >>> .el-textarea.is-disabled .el-textarea__inner {
+  color: #606266
+}
+.el-form-item >>> .el-input.is-disabled .el-input__inner {
+  color: #606266
+}
+.el-form-item >>> .el-form-item__label {
+  font-size: 16px;
+}
+.el-radio >>> .el-radio__input.is-disabled+span.el-radio__label {
+  color: #606266
+}
+.el-input .el-textarea .el-radio {
+  font-size: 16px;
 }
 </style>

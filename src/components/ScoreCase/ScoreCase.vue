@@ -1,114 +1,67 @@
 <template>
   <div class="scoreCaseBox">
-    <div v-if="false">
-      <div v-if="scoreType === '头颈'">
-      <HeadScore :TJScore="scoreForm" @submit="submitScore" :disabled="disabled"></HeadScore>
-    </div>
-    <div v-else-if="scoreType === '心胸'">
-      <HeartCase :XXScore="scoreForm" @submit="submitScore" :disabled="disabled"></HeartCase>
-    </div>
-    <div v-else-if="scoreType === '腹部'">
-      <AbdomenScore :FBScore="scoreForm" @submit="submitScore" :disabled="disabled"></AbdomenScore>
-    </div>
-    <div v-else-if="scoreType === '外周'">
-      <PeripheralScore :WZScore="scoreForm" @submit="submitScore" :disabled="disabled"></PeripheralScore>
-    </div>
-    </div>
     <div>
-      <CommenScore
-        :TJScore="scoreForm"
-        @submit="submitScore"
+      <div v-if="scoreType === 0">
+        <NerveScore
+        :patientCaseId = patientCaseId
         :disabled="disabled"
+        :links="links"
       />
+      </div>
+      <div v-if="scoreType === 1">
+        <NeckScore
+        :patientCaseId = patientCaseId
+        :disabled="disabled"
+        :links="links"
+      />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { SocrePatientCase, GetScore } from "@/api/index.js";
-import HeadScore from "./HeadScore/HeadScore";
-import HeartCase from "./HeartCase/HeartScore";
-import AbdomenScore from "./AbdomenScore/AbdomenScore";
-import PeripheralScore from "./PeripheralScore/PeripheralScore";
-import CommenScore from "./CommenCase/CommenCase.vue";
+
+import NerveScore from "./NerveScore/NerveScore.vue";
+import NeckScore from "./NeckScore/NeckScore.vue";
 
 export default {
   name: "ScoreCase",
   props: {
     patientCaseId: String,
-    scoreType: String,
+    scoreType: Number,
     disabled: {
       type: Boolean,
       default: false,
+    },
+    links: {
+      type: Array,
+      default: () => {
+        return [];
+      },
     },
   },
   data() {
     return {
       scoreForm: {
-        LCZLScore: 0,
-        JCSBScore: 0,
-        SMXLScore: 0,
-        DBJYYScore: 0,
-        TPZLScore: 0,
-        LCZDScore: 0,
-        SMFAScore: 0,
-        TotleScore: 0,
       },
       submitForm: null,
+      MRScoreType: 0,
     };
   },
   methods: {
-    async SocrePatientCaseAsync() {
-      const that = this;
-      const r = await SocrePatientCase(this.submitForm);
-      if (r.code === 1) {
-        // console.log(r.data);
-        that.$message.success("评分成功");
-      } else {
-        this.$alertError(r.error);
-      }
-    },
-    async GetScoreAsync() {
-      const that = this;
-      const r = await GetScore({
-        patientCaseId: that.patientCaseId,
-      });
-      if (r.code === 1) {
-        console.log(r.data);
-        // if (that.scoreType === "头颈") {
-        //   that.scoreForm = r.data.TJScore;
-        // }
-        // if (that.scoreType === "心胸") {
-        //   that.scoreForm = r.data.XXScore;
-        // }
-        // if (that.scoreType === "腹部") {
-        //   that.scoreForm = r.data.FBScore;
-        // }
-        // if (that.scoreType === "外周") {
-        //   that.scoreForm = r.data.WZScore;
-        // }
-        that.scoreForm = r.data;
-      } else {
-        this.$alertError(r.error);
-      }
-    },
-    submitScore(obj) {
-      this.submitForm = Object.assign(
-        { PatientCaseId: this.patientCaseId },
-        obj
-      );
-      this.SocrePatientCaseAsync();
-    },
+    // submitScore(obj) {
+    //   this.submitForm = Object.assign(
+    //     { PatientCaseId: this.patientCaseId },
+    //     obj
+    //   );
+    //   this.SocrePatientCaseAsync();
+    // },
   },
   components: {
-    HeadScore,
-    HeartCase,
-    AbdomenScore,
-    PeripheralScore,
-    CommenScore,
+    NerveScore,
+    NeckScore,
   },
   created() {
-    this.GetScoreAsync();
   },
   mounted() {},
 };
