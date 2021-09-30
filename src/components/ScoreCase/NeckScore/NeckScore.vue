@@ -7,16 +7,24 @@
       :model="DataScore"
       :disabled="disabled"
     >
-      <el-form-item label="下载案例" required="">
+      <el-form-item label="下载" required="">
         <div v-for="(item, index) in links" :key="index">
           <el-link type="success" :href="item.Link" target="_blank">
-            <span class="green_text">{{ item.Name }}</span>
+            <span class="green_text">下载案例影像</span>
           </el-link>
           <!-- <div>文件大小：{{ item.FileSize | formatSize }}</div> -->
         </div>
+        <el-link type="success" :href="XlsLink" target="_blank">
+          <span class="green_text">下载详细评分表</span>
+        </el-link>
       </el-form-item>
 
-      <el-form-item label="临床资料（满分10分）" required>
+      <el-divider></el-divider>
+
+      <el-form-item
+        label="临床资料（满分10分）主要评估所提供信息的完整性"
+        required
+      >
         <!-- 基本信息 -->
         <div>
           <img
@@ -88,11 +96,14 @@
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="临床资料总分" required>
-        <span class="totalScore">{{ getLCZLTotal }} 分</span>
+      <el-form-item label="">
+        <span class="totalScore">临床资料总分 {{ getLCZLTotal }} 分</span>
       </el-form-item>
 
-      <el-form-item label="检查设备信息（满分5分）" required>
+      <el-form-item
+        label="检查设备信息（满分5分）主要评估所提供信息的完整性"
+        required
+      >
         <img
           class="socre_image"
           src="@/assets/images/scoreImages/NeckImage/JCSBXX.png"
@@ -106,7 +117,10 @@
         ></el-input-number>
       </el-form-item>
 
-      <el-form-item label="扫描序列及参数（满分30分）" required>
+      <el-form-item
+        label="扫描序列及参数（满分30分）主要评估所提供信息的完整性"
+        required
+      >
         <!-- 平扫序列及参数 -->
         <div>
           <img
@@ -150,11 +164,14 @@
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="扫描序列及参数总分" required>
-        <span class="totalScore">{{ getSMXLTotal }} 分</span>
+      <el-form-item label="">
+        <span class="totalScore">扫描序列及参数总分 {{ getSMXLTotal }} 分</span>
       </el-form-item>
 
-      <el-form-item label="对⽐剂运⽤（满分10分）" required>
+      <el-form-item
+        label="对⽐剂运⽤（满分10分）主要评估所提供信息的完整性"
+        required
+      >
         <img
           class="socre_image"
           src="@/assets/images/scoreImages/NeckImage/DBJ.png"
@@ -168,7 +185,10 @@
         ></el-input-number>
       </el-form-item>
 
-      <el-form-item label="增强效果分析（满分30分）按照李克特评分体系" required>
+      <el-form-item
+        label="增强效果分析（满分30分）按照李克特评分体系（1-5分）"
+        required
+      >
         <div>
           <img
             class="socre_image"
@@ -248,11 +268,14 @@
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="增强效果分析总分" required>
-        <span class="totalScore">{{ getZQXGTotal }} 分</span>
+      <el-form-item label="">
+        <span class="totalScore">增强效果分析总分 {{ getZQXGTotal }} 分</span>
       </el-form-item>
 
-      <el-form-item label="临床诊断价值（满分10分）" required>
+      <el-form-item
+        label="临床诊断价值（满分10分）是否清晰阐述了该扫描方案对于更好的强调和展示疾病影像特征的考虑"
+        required
+      >
         <div>
           <img
             class="socre_image"
@@ -280,11 +303,14 @@
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="临床诊断价值总分" required>
-        <span class="totalScore">{{ getLCZDTotal }} 分</span>
+      <el-form-item label="">
+        <span class="totalScore">临床诊断价值总分 {{ getLCZDTotal }} 分</span>
       </el-form-item>
 
-      <el-form-item label="扫描⽅案⼩结（满分5分）" required>
+      <el-form-item
+        label="扫描⽅案⼩结（满分5分）是否清晰阐述了该扫描方案对于更好的强调和展示疾病影像特征的考虑"
+        required
+      >
         <div>
           <img
             class="socre_image"
@@ -312,12 +338,12 @@
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="扫描⽅案⼩结总分" required>
-        <span class="totalScore">{{ getSMFATotal }} 分</span>
+      <el-form-item label="">
+        <span class="totalScore">扫描⽅案⼩结总分 {{ getSMFATotal }} 分</span>
       </el-form-item>
 
-      <el-form-item label="总分" required>
-        <span class="totalScore">{{ getTotal }} 分</span>
+      <el-form-item label="">
+        <span class="totalScore">总分 {{ getTotal }} 分</span>
       </el-form-item>
 
       <el-form-item>
@@ -353,27 +379,33 @@ export default {
   },
   data() {
     return {
+      XlsLink: "",
       TotleScore: 0,
       scoreform: {},
       LCZLScore: {
+        Totle: "0",
         JBXX: "0",
         ZSYBS: "0",
         SYSXGJC: "0",
         NJJX: "0",
-        MRIJCBW: "0", 
+        MRIJCBW: "0",
       },
       JCSBScore: {
+        Totle: "0",
         JCSBXX: "0",
       },
       SMXLScore: {
+        Totle: "0",
         PSXLJCS: "0",
         ZQSMXL: "0",
         DTZQ: "0",
       },
       DBJScore: {
+        Totle: "0",
         DBJGF: "0",
       },
       ZQXGScore: {
+        Totle: "0",
         JBFW: "0",
         NBXT: "0",
         DTZQ: "0",
@@ -382,10 +414,12 @@ export default {
         ZTBX: "0",
       },
       LCZDScore: {
+        Totle: "0",
         ZXMS: "0",
         SFMZ: "0",
       },
       SMXJScore: {
+        Totle: "0",
         SMFA: "0",
         SMQD: "0",
       },
@@ -405,6 +439,7 @@ export default {
           // 神经
           this.MRScoreType = r.data.MRScoreType;
           this.scoreform = r.data.MRTJScore;
+          this.XlsLink = r.data.XlsLink;
           if (this.scoreform) {
             if (this.scoreform.LCZLScore) {
               this.LCZLScore = this.scoreform.LCZLScore;
@@ -433,8 +468,15 @@ export default {
         this.$alertError(r.error);
       }
     },
-    async SocrePatientCaseAsync() {
-      this.MRTJScore = {
+    countTotal() {
+      this.LCZLScore.Totle = this.getLCZLTotal;
+      this.JCSBScore.Totle = this.JCSBScore.JCSBXX;
+      this.SMXLScore.Totle = this.getSMXLTotal;
+      this.DBJScore.Totle = this.DBJScore.DBJGF;
+      this.ZQXGScore.Totle = this.getZQXGTotal;
+      this.LCZDScore.Totle = this.getLCZDTotal;
+      this.SMXJScore.Totle = this.getSMFATotal;
+      return {
         TotleScore: this.TotleScore,
         LCZLScore: this.LCZLScore,
         JCSBScore: this.JCSBScore,
@@ -444,6 +486,10 @@ export default {
         LCZDScore: this.LCZDScore,
         SMXJScore: this.SMXJScore,
       };
+    },
+    async SocrePatientCaseAsync() {
+      // 根据参数计算所有总分
+      this.MRTJScore = this.countTotal();
       const that = this;
       const r = await SocrePatientCase({
         PatientCaseId: this.patientCaseId,
@@ -535,7 +581,13 @@ export default {
   font-size: 16px;
 }
 .totalScore {
-  font-size: 16px;
+  font-size: 18px;
+  color: #8f5494;
+  width: 100%;
+  text-align: right;
+  display: block;
+  margin: 15px 0;
+  font-weight: 550;
 }
 .el-input-number {
   float: right;
