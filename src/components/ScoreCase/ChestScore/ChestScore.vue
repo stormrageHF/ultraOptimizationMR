@@ -29,7 +29,7 @@
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/JBXX.png"
+            src="@/assets/images/scoreImages/chestImage/JBXX.png"
           />
           <el-input-number
             v-model="LCZLScore.JBXX"
@@ -43,7 +43,7 @@
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/ZSBS.png"
+            src="@/assets/images/scoreImages/chestImage/ZSBS.png"
           />
           <el-input-number
             v-model="LCZLScore.ZSYBS"
@@ -53,30 +53,44 @@
             label="得分"
           ></el-input-number>
         </div>
-        <!-- 实验室相关检查 -->
+        <!-- 实验室检查 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/SYSXG.png"
+            src="@/assets/images/scoreImages/chestImage/SYSJC.png"
           />
           <el-input-number
             v-model="LCZLScore.SYSXGJC"
             :min="0"
-            :max="1"
+            :max="2"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
-        <!-- 内镜及相关临床设备检查 -->
+        <!-- ⼼⾎管相关检查阳性结果 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/NJXG.png"
+            src="@/assets/images/scoreImages/chestImage/XXG.png"
           />
           <el-input-number
-            v-model="LCZLScore.NJJX"
+            v-model="LCZLScore.XXGJC"
             :min="0"
-            :max="5"
+            :max="3"
+            :step="0.5"
+            label="得分"
+          ></el-input-number>
+        </div>
+        <!-- 临床诊断 -->
+        <div>
+          <img
+            class="socre_image"
+            src="@/assets/images/scoreImages/chestImage/LCZD.png"
+          />
+          <el-input-number
+            v-model="LCZLScore.LCZD"
+            :min="0"
+            :max="1"
             :step="0.5"
             label="得分"
           ></el-input-number>
@@ -85,7 +99,7 @@
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/JCBW.png"
+            src="@/assets/images/scoreImages/chestImage/MRIJCBW.png"
           />
           <el-input-number
             v-model="LCZLScore.MRIJCBW"
@@ -96,17 +110,17 @@
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="">
+      <el-form-item>
         <span class="totalScore">临床资料总分 {{ getLCZLTotal }} 分</span>
       </el-form-item>
 
       <el-form-item
-        label="检查设备信息（满分5分）主要评估所提供信息的完整性"
+        label="检查设备信息（满分5分）按资料是否完整，各1分"
         required
       >
         <img
           class="socre_image"
-          src="@/assets/images/scoreImages/NeckImage/JCSBXX.png"
+          src="@/assets/images/scoreImages/chestImage/JCSBXX.png"
         />
         <el-input-number
           v-model="JCSBScore.JCSBXX"
@@ -118,63 +132,94 @@
       </el-form-item>
 
       <el-form-item
-        label="扫描序列及参数（满分30分）主要评估所提供信息的完整性"
+        label="扫描序列及参数（满分20分）按资料是否完整评估"
         required
       >
-        <!-- 平扫序列及参数 -->
+        <!-- 参数序列 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/SMXL.png"
+            src="@/assets/images/scoreImages/chestImage/CSXL.png"
           />
           <el-input-number
-            v-model="SMXLScore.PSXLJCS"
+            v-model="SMXLScore.CSXL"
             :min="0"
-            :max="10"
+            :max="3"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
-        <!-- 增强扫描序列及参数 -->
+        <!-- ⾸过灌注序列 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/ZQSM.png"
+            src="@/assets/images/scoreImages/chestImage/GZXL.png"
           />
           <el-input-number
-            v-model="SMXLScore.ZQSMXL"
+            v-model="SMXLScore.SGGZXL"
             :min="0"
-            :max="10"
+            :max="3"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
-        <!-- 动态增强扫描序列及参数 -->
+        <!-- 电影序列 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/DTZQ.png"
+            src="@/assets/images/scoreImages/chestImage/DYXL.png"
           />
           <el-input-number
-            v-model="SMXLScore.DTZQ"
+            v-model="SMXLScore.DYXL"
             :min="0"
-            :max="10"
+            :max="5"
+            :step="0.5"
+            label="得分"
+          ></el-input-number>
+        </div>
+        <!-- 延迟强化序列 -->
+        <div>
+          <img
+            class="socre_image"
+            src="@/assets/images/scoreImages/chestImage/YCQHXL.png"
+          />
+          <el-input-number
+            v-model="SMXLScore.YCQHXL"
+            :min="0"
+            :max="5"
+            :step="0.5"
+            label="得分"
+          ></el-input-number>
+        </div>
+        <div class="labelWeight">
+          *根据不同病种删减，酌情分配分数,负荷⼼肌灌注、4Dflow可为加分项
+        </div>
+        <!-- 特殊序列 -->
+        <div>
+          <img
+            class="socre_image"
+            src="@/assets/images/scoreImages/chestImage/TSXL.png"
+          />
+          <el-input-number
+            v-model="SMXLScore.TSXL"
+            :min="0"
+            :max="4"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="">
+      <el-form-item>
         <span class="totalScore">扫描序列及参数总分 {{ getSMXLTotal }} 分</span>
       </el-form-item>
 
       <el-form-item
-        label="对⽐剂运⽤（满分10分）主要评估所提供信息的完整性"
+        label="对⽐剂运⽤（满分10分）根据资料完整性，各2分"
         required
       >
         <img
           class="socre_image"
-          src="@/assets/images/scoreImages/NeckImage/DBJ.png"
+          src="@/assets/images/scoreImages/chestImage/DBJGF.png"
         />
         <el-input-number
           v-model="DBJScore.DBJGF"
@@ -186,113 +231,79 @@
       </el-form-item>
 
       <el-form-item
-        label="增强效果分析（满分30分）按照李克特评分体系（1-5分）"
+        label="增强效果分析（满分30分）按相应的参考分级评分"
         required
       >
+        <!-- 图像质量主观评价指标 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/JBFW.png"
+            src="@/assets/images/scoreImages/chestImage/ZGPJ.png"
           />
           <el-input-number
-            v-model="ZQXGScore.JBFW"
+            v-model="ZQXGScore.ZGPJ"
             :min="0"
-            :max="5"
+            :max="10"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
+        <!-- 图像质量客观评价指标 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/NBXT.png"
+            src="@/assets/images/scoreImages/chestImage/KGPJ.png"
           />
           <el-input-number
-            v-model="ZQXGScore.NBXT"
+            v-model="ZQXGScore.KGPJ"
             :min="0"
-            :max="5"
+            :max="10"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
+        <!-- 图像质量是否满⾜诊断需求 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/DTZQSM.png"
+            src="@/assets/images/scoreImages/chestImage/MZZDXQ.png"
           />
           <el-input-number
-            v-model="ZQXGScore.DTZQ"
+            v-model="ZQXGScore.SFMZ"
             :min="0"
-            :max="5"
-            :step="0.5"
-            label="得分"
-          ></el-input-number>
-        </div>
-        <div>
-          <img
-            class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/ZTZQ.png"
-          />
-          <el-input-number
-            v-model="ZQXGScore.ZTZQ"
-            :min="0"
-            :max="5"
-            :step="0.5"
-            label="得分"
-          ></el-input-number>
-        </div>
-        <div>
-          <img
-            class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/MXWY.png"
-          />
-          <el-input-number
-            v-model="ZQXGScore.MXWY"
-            :min="0"
-            :max="5"
-            :step="0.5"
-            label="得分"
-          ></el-input-number>
-        </div>
-        <div>
-          <img
-            class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/ZTZDBX.png"
-          />
-          <el-input-number
-            v-model="ZQXGScore.ZTBX"
-            :min="0"
-            :max="5"
+            :max="10"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="">
+      <el-form-item>
         <span class="totalScore">增强效果分析总分 {{ getZQXGTotal }} 分</span>
       </el-form-item>
 
       <el-form-item
-        label="临床诊断价值（满分10分）是否清晰阐述了该扫描方案对于更好的强调和展示疾病影像特征的考虑"
+        label="临床诊断价值（满分15分）是否清晰阐述了该扫描方案对于更好的强调和展示疾病影像特征的考虑"
         required
       >
+        <!-- 征象描述与鉴别诊断 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages//NeckImage/LCZD1.png"
+            src="@/assets/images/scoreImages//chestImage/ZXMS.png"
           />
           <el-input-number
             v-model="LCZDScore.ZXMS"
             :min="0"
-            :max="5"
+            :max="10"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
+        <!-- 是否满⾜临床，下⼀步检查建议 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages//NeckImage/LCZD2.png"
+            src="@/assets/images/scoreImages//chestImage/SFMZ.png"
           />
           <el-input-number
             v-model="LCZDScore.SFMZ"
@@ -303,46 +314,48 @@
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="">
+      <el-form-item>
         <span class="totalScore">临床诊断价值总分 {{ getLCZDTotal }} 分</span>
       </el-form-item>
 
       <el-form-item
-        label="扫描⽅案⼩结（满分5分）是否清晰阐述了该扫描方案对于更好的强调和展示疾病影像特征的考虑"
+        label="扫描⽅案⼩结（满分10分）是否清晰阐述了该扫描方案对于更好的强调和展示疾病影像特征的考虑"
         required
       >
+        <!-- 扫描⽅案特点⼩结 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/SMFA1.png"
+            src="@/assets/images/scoreImages/chestImage/SMFA.png"
           />
           <el-input-number
             v-model="SMXJScore.SMFA"
             :min="0"
-            :max="2.5"
+            :max="5"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
+        <!-- 扫描检查⽅案对临床的启迪性 -->
         <div>
           <img
             class="socre_image"
-            src="@/assets/images/scoreImages/NeckImage/SMFA2.png"
+            src="@/assets/images/scoreImages/chestImage/SMFAJC.png"
           />
           <el-input-number
             v-model="SMXJScore.SMQD"
             :min="0"
-            :max="2.5"
+            :max="5"
             :step="0.5"
             label="得分"
           ></el-input-number>
         </div>
       </el-form-item>
-      <el-form-item label="">
+      <el-form-item>
         <span class="totalScore">扫描⽅案⼩结总分 {{ getSMFATotal }} 分</span>
       </el-form-item>
 
-      <el-form-item label="">
+      <el-form-item>
         <span class="totalScore">总分 {{ getTotal }} 分</span>
       </el-form-item>
 
@@ -357,7 +370,7 @@
 import { GetScore, SocrePatientCase } from "@/api/index.js";
 
 export default {
-  name: "NeckScore",
+  name: "ChestScore",
   props: {
     patientCaseId: String,
     DataScore: {
@@ -387,7 +400,8 @@ export default {
         JBXX: "0",
         ZSYBS: "0",
         SYSXGJC: "0",
-        NJJX: "0",
+        XXGJC: "0",
+        LCZD: "0",
         MRIJCBW: "0",
       },
       JCSBScore: {
@@ -396,9 +410,11 @@ export default {
       },
       SMXLScore: {
         Totle: "0",
-        PSXLJCS: "0",
-        ZQSMXL: "0",
-        DTZQ: "0",
+        CSXL: "0",
+        SGGZXL: "0",
+        DYXL: "0",
+        YCQHXL: "0",
+        TSXL: "0",
       },
       DBJScore: {
         Totle: "0",
@@ -406,12 +422,9 @@ export default {
       },
       ZQXGScore: {
         Totle: "0",
-        JBFW: "0",
-        NBXT: "0",
-        DTZQ: "0",
-        ZTZQ: "0",
-        MXWY: "0",
-        ZTBX: "0",
+        ZGPJ: "0",
+        KGPJ: "0",
+        SFMZ: "0",
       },
       LCZDScore: {
         Totle: "0",
@@ -423,8 +436,8 @@ export default {
         SMFA: "0",
         SMQD: "0",
       },
-      MRTJScore: {},
-      MRScoreType: 1,
+      MRXXScore: {},
+      MRScoreType: 2,
     };
   },
   methods: {
@@ -435,11 +448,11 @@ export default {
       });
       if (r.code === 1) {
         console.log(r.data);
-        // 头颈
-        if (r.data.MRScoreType === 1) {
-          // 神经
+        // 心胸
+        if (r.data.MRScoreType === 2) {
+          // 心胸
           this.MRScoreType = r.data.MRScoreType;
-          this.scoreform = r.data.MRTJScore;
+          this.scoreform = r.data.MRXXScore;
           this.XlsLink = r.data.XlsLink;
           if (this.scoreform) {
             if (this.scoreform.LCZLScore) {
@@ -489,13 +502,12 @@ export default {
       };
     },
     async SocrePatientCaseAsync() {
-      // 根据参数计算所有总分
-      this.MRTJScore = this.countTotal();
+      this.MRXXScore = this.countTotal();
       const that = this;
       const r = await SocrePatientCase({
         PatientCaseId: this.patientCaseId,
         MRScoreType: this.MRScoreType,
-        MRTJScore: this.MRTJScore,
+        MRXXScore: this.MRXXScore,
       });
       if (r.code === 1) {
         // console.log(r.data);
@@ -505,7 +517,7 @@ export default {
       }
     },
     submitScore() {
-      console.log(this.MRScoreType);
+      console.log(this.patientCaseId);
       this.SocrePatientCaseAsync();
     },
   },
@@ -515,27 +527,27 @@ export default {
         this.LCZLScore.JBXX +
         this.LCZLScore.ZSYBS +
         this.LCZLScore.SYSXGJC +
-        this.LCZLScore.NJJX +
+        this.LCZLScore.XXGJC +
+        this.LCZLScore.LCZD +
         this.LCZLScore.MRIJCBW +
         0;
       return tt;
     },
     getSMXLTotal() {
       let tt =
-        this.SMXLScore.PSXLJCS +
-        this.SMXLScore.ZQSMXL +
-        this.SMXLScore.DTZQ +
+        this.SMXLScore.CSXL +
+        this.SMXLScore.SGGZXL +
+        this.SMXLScore.DYXL +
+        this.SMXLScore.YCQHXL +
+        this.SMXLScore.TSXL +
         0;
       return tt;
     },
     getZQXGTotal() {
       let tt =
-        this.ZQXGScore.JBFW +
-        this.ZQXGScore.NBXT +
-        this.ZQXGScore.DTZQ +
-        this.ZQXGScore.ZTZQ +
-        this.ZQXGScore.MXWY +
-        this.ZQXGScore.ZTBX +
+        this.ZQXGScore.ZGPJ +
+        this.ZQXGScore.KGPJ +
+        this.ZQXGScore.SFMZ +
         0;
       return tt;
     },
@@ -592,5 +604,10 @@ export default {
 }
 .el-input-number {
   float: right;
+}
+.labelWeight {
+  font-size: 16px;
+  margin: 50px 0 20px;
+  text-align: left;
 }
 </style>

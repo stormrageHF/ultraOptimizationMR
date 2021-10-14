@@ -1,28 +1,41 @@
 <template>
   <div class="scoreCaseBox">
     <div>
+      <!-- 神经 -->
       <div v-if="scoreType === 0">
         <NerveScore
-        :patientCaseId = patientCaseId
-        :disabled="disabled"
-        :links="links"
-      />
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
       </div>
+
+      <!-- 脖颈 -->
       <div v-if="scoreType === 1">
         <NeckScore
-        :patientCaseId = patientCaseId
-        :disabled="disabled"
-        :links="links"
-      />
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
       </div>
+
+      <!-- 心胸 -->
+      <div v-if="scoreType === 2">
+        <ChestScore
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
-
 import NerveScore from "./NerveScore/NerveScore.vue";
 import NeckScore from "./NeckScore/NeckScore.vue";
+import ChestScore from "./ChestScore/ChestScore.vue";
 
 export default {
   name: "ScoreCase",
@@ -42,8 +55,7 @@ export default {
   },
   data() {
     return {
-      scoreForm: {
-      },
+      scoreForm: {},
       submitForm: null,
       MRScoreType: 0,
     };
@@ -60,9 +72,9 @@ export default {
   components: {
     NerveScore,
     NeckScore,
+    ChestScore,
   },
-  created() {
-  },
+  created() {},
   mounted() {},
 };
 </script>

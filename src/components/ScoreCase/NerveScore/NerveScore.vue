@@ -424,6 +424,7 @@ export default {
         SMQD: "0",
       },
       MRSJScore: {},
+      MRScoreType: 0,
     };
   },
   methods: {
