@@ -28,6 +28,15 @@
         />
       </div>
 
+      <!-- 乳腺 -->
+      <div v-if="scoreType === 3">
+        <BreastScore
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
+      </div>
+
     </div>
   </div>
 </template>
@@ -36,6 +45,7 @@
 import NerveScore from "./NerveScore/NerveScore.vue";
 import NeckScore from "./NeckScore/NeckScore.vue";
 import ChestScore from "./ChestScore/ChestScore.vue";
+import BreastScore from "./BreastScore/BreastScore.vue"
 
 export default {
   name: "ScoreCase",
@@ -73,6 +83,7 @@ export default {
     NerveScore,
     NeckScore,
     ChestScore,
+    BreastScore,
   },
   created() {},
   mounted() {},
