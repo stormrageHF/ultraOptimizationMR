@@ -37,6 +37,33 @@
         />
       </div>
 
+      <!-- 肝脏 -->
+      <div v-if="scoreType === 4">
+        <LiverScore
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
+      </div>
+
+      <!-- 盆腔 -->
+      <div v-if="scoreType === 5">
+        <PelvicScore
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
+      </div>
+
+      <!-- 胃肠道 -->
+      <div v-if="scoreType === 6">
+        <GITScore
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
+      </div>
+
     </div>
   </div>
 </template>
@@ -45,7 +72,10 @@
 import NerveScore from "./NerveScore/NerveScore.vue";
 import NeckScore from "./NeckScore/NeckScore.vue";
 import ChestScore from "./ChestScore/ChestScore.vue";
-import BreastScore from "./BreastScore/BreastScore.vue"
+import BreastScore from "./BreastScore/BreastScore.vue";
+import LiverScore from "./LiverScore/LiverScore.vue";
+import PelvicScore from "./PelvicScore/PelvicScore.vue";
+import GITScore from "./GITScore/GITScore.vue";
 
 export default {
   name: "ScoreCase",
@@ -84,6 +114,9 @@ export default {
     NeckScore,
     ChestScore,
     BreastScore,
+    LiverScore,
+    PelvicScore,
+    GITScore,
   },
   created() {},
   mounted() {},
