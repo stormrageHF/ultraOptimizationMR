@@ -64,6 +64,15 @@
         />
       </div>
 
+      <!-- 磁共振骨肌组 -->
+       <div v-if="scoreType === 7">
+        <SkeletonScore
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
+      </div>
+
     </div>
   </div>
 </template>
@@ -76,6 +85,7 @@ import BreastScore from "./BreastScore/BreastScore.vue";
 import LiverScore from "./LiverScore/LiverScore.vue";
 import PelvicScore from "./PelvicScore/PelvicScore.vue";
 import GITScore from "./GITScore/GITScore.vue";
+import SkeletonScore from "./SkeletonScore/SkeletonScore.vue"
 
 export default {
   name: "ScoreCase",
@@ -117,6 +127,7 @@ export default {
     LiverScore,
     PelvicScore,
     GITScore,
+    SkeletonScore,
   },
   created() {},
   mounted() {},
