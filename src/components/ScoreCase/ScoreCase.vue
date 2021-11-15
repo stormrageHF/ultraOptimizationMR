@@ -73,6 +73,15 @@
         />
       </div>
 
+      <!-- 磁共振MRI -->
+       <div v-if="scoreType === 8">
+        <MRxgcxScore
+          :patientCaseId="patientCaseId"
+          :disabled="disabled"
+          :links="links"
+        />
+      </div>
+
     </div>
   </div>
 </template>
@@ -86,6 +95,7 @@ import LiverScore from "./LiverScore/LiverScore.vue";
 import PelvicScore from "./PelvicScore/PelvicScore.vue";
 import GITScore from "./GITScore/GITScore.vue";
 import SkeletonScore from "./SkeletonScore/SkeletonScore.vue"
+import MRxgcxScore from "./MRxgcxScore/MRxgcxScore.vue"
 
 export default {
   name: "ScoreCase",
@@ -128,6 +138,7 @@ export default {
     PelvicScore,
     GITScore,
     SkeletonScore,
+    MRxgcxScore
   },
   created() {},
   mounted() {},
